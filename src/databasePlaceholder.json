@@ -1,0 +1,26 @@
+[
+    {
+        "id": 0,
+        "title": "Spiderman: Brave New World",
+        "medium": "Movie",
+        "releaseDate": "01-01-0001",
+        "image": "spiderman_bnw.png",
+        "numberOfReviews": 0
+    },
+    {
+        "id": 1,
+        "title": "Superman",
+        "medium": "Movie",
+        "releaseDate": "01-01-0001",
+        "image": "superman2026.png",
+        "numberOfReviews": 0
+    },
+    {
+        "id": 2,
+        "title": "Supergirl",
+        "medium": "Movie",
+        "releaseDate": "01-01-0001",
+        "image": "supergirl.png",
+        "numberOfReviews": 0
+    }
+]
