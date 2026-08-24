@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import database from './databasePlaceholder.json'
 import PopularRecently from './components/PopularRecently'
+import './App.css'
 function App() {
 
   return (
@@ -18,5 +19,6 @@ function App() {
 
 export default App
 
-
+//questions asked
 // how should the popular works component work?  Does it change the type of component it calls dynamically (movie, book, etc)?  Or should I have a single, more general 'Work' component that dynamically switches depending on what medium it is?
+  //let's leave the data as data and the presentation as presentation.  a general Work component can handle most data, and if we need more specific additions to a component, we can add them later

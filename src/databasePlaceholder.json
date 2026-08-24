@@ -1,25 +1,25 @@
 [
     {
         "id": 0,
-        "title": "Spiderman: Brave New World",
+        "title": "Spiderman: Brand New Day",
         "medium": "Movie",
-        "releaseDate": "01-01-0001",
-        "image": "spiderman_bnw.png",
+        "releaseDate": "07-31-2026",
+        "image": "spiderman_bnd.png",
         "numberOfReviews": 0
     },
     {
         "id": 1,
         "title": "Superman",
         "medium": "Movie",
-        "releaseDate": "01-01-0001",
-        "image": "superman2026.png",
+        "releaseDate": "07-11-2025",
+        "image": "superman2025.png",
         "numberOfReviews": 0
     },
     {
         "id": 2,
         "title": "Supergirl",
         "medium": "Movie",
-        "releaseDate": "01-01-0001",
+        "releaseDate": "06-26-2026",
         "image": "supergirl.png",
         "numberOfReviews": 0
     }

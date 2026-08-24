@@ -3,17 +3,11 @@ import Work from './Work'
 function PopularRecently(props) {
     const data = props.data
     return (
-        <section>
+        <section className="popularWorks">
             <h1>Popular Lately</h1>
-            <Work
-                workData = {data[0]}
-            />
-            <Work
-                workData = {data[1]}
-            />
-            <Work
-                workData = {data[2]}
-            />
+            <img src={`images/${data[0].image}`} alt={`book cover or movie poster for ${data[0].title}`} />
+            <img src={`images/${data[1].image}`} alt={`book cover or movie poster for ${data[1].title}`} />
+            <img src={`images/${data[2].image}`} alt={`book cover or movie poster for ${data[2].title}`} />
         </section>
     )
 }

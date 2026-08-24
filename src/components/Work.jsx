@@ -2,7 +2,7 @@ function Work(props) {
     const info = props.workData
     return (
         <section>
-            <img src={info.image} alt={`book cover or movie poster for ${info.title}`} />
+            <img src={`images/${info.image}`} alt={`book cover or movie poster for ${info.title}`} />
             <h1>{info.medium}: {info.title || "Title of Work"}</h1>
             <ul>
                 <li>{info.releaseDate}</li>
@@ -19,4 +19,4 @@ export default Work
 // medium 
 // rlease date 
 // image 
-// reviews 
+// reviews
