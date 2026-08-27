@@ -1,13 +1,84 @@
-.popularWorks > img{
-   width: 375px;
-   height: auto;
-   margin: 3px 3px;
+/* Header Styles */
+
+header {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+
+  padding: 1rem;
+  gap: 1rem;
 }
 
-/* For devices with a minimum width of 768px (Medium) */
-@media screen and (min-width: 768px) {
-  .popularWorks > img {
-        width: 480px;
-        height: 640px;
-    }
+.logo {
+  width: 45px;
+  height: 45px;
+  object-fit: contain;
+}
+
+.site-title {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+nav {
+  grid-column: 1 / -1;
+  justify-self: center;
+  width: 100%;
+}
+
+nav ul {
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav a {
+  text-decoration: none;
+  color: inherit;
+  font-weight: 500;
+}
+
+
+
+/* Tablet-Size CSS */
+@media (min-width: 600px) {
+  header {
+    grid-template-columns: auto 1fr auto;
+    padding: 1rem 2rem;
+  }
+
+  nav {
+    grid-column: auto;
+    width: auto;
+    justify-self: end;
+  }
+
+  nav ul {
+    gap: 1.25rem;
+  }
+}
+
+/* Desktop-Size CSS */
+@media (min-width: 1024px) {
+  header {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1.25rem 2rem;
+  }
+
+  .logo {
+    width: 55px;
+    height: 55px;
+  }
+
+  .site-title {
+    font-size: 2rem;
+  }
+
+  nav ul {
+    gap: 1.5rem;
+  }
 }
