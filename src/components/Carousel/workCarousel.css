@@ -1,0 +1,17 @@
+.work-carousel {
+    display: flex;
+    overflow-x: auto;
+    gap: 1rem;
+    scroll-snap-type: x mandatory;
+}
+
+.work-slide {
+    flex: 0 0 70%;
+    scroll-snap-align: start;
+}
+
+.work-slide img {
+    display: block;
+    width: 100%;
+    height: auto;
+}

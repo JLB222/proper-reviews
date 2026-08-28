@@ -1,13 +1,13 @@
-import Work from './Work'
+import database from '../databasePlaceholder.json'
+import WorkCarousel from './Carousel/WorkCarousel'
 
 function PopularRecently(props) {
-    const data = props.data
     return (
         <section className="popularWorks">
             <h1>Popular Lately</h1>
-            <img src={`images/${data[0].image}`} alt={`book cover or movie poster for ${data[0].title}`} />
-            <img src={`images/${data[1].image}`} alt={`book cover or movie poster for ${data[1].title}`} />
-            <img src={`images/${data[2].image}`} alt={`book cover or movie poster for ${data[2].title}`} />
+            <WorkCarousel 
+                works = {database}
+            />
         </section>
     )
 }

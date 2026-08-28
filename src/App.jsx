@@ -14,7 +14,7 @@ function App() {
           <Header/>
       </BrowserRouter>
       <PopularRecently
-              medium = "Movie"  //this might be needed later when we re-use the PopularWorks component for Movies, Books, Comics, etc.  We'll need to tell the server which works to retrieve
+              medium = "movie"  //this might be needed later when we re-use the PopularWorks component for Movies, Books, Comics, etc.  We'll need to tell the server which works to retrieve
               data = {database}  //will later sort by most new reviews
       />
 
