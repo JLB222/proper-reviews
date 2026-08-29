@@ -3,3 +3,7 @@
     flex-direction: column;
     align-items: center;
 } 
+
+.work-section img {
+    max-width: 50%;
+}
