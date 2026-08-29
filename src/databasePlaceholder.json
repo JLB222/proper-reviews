@@ -22,5 +22,77 @@
         "releaseDate": "06-26-2026",
         "image": "supergirl.png",
         "numberOfReviews": 0
+    },
+    {
+        "id": 3,
+        "title": "The Shawshank Redemption",
+        "medium": "movie",
+        "releaseDate": "09-23-1994",
+        "image": "shawshank_redemption.png",
+        "numberOfReviews": 0
+    },
+    {
+        "id": 4,
+        "title": "The Dark Knight",
+        "medium": "movie",
+        "releaseDate": "07-18-2008",
+        "image": "dark_knight.png",
+        "numberOfReviews": 0
+    },
+    {
+        "id": 5,
+        "title": "Everything Everywhere All at Once",
+        "medium": "movie",
+        "releaseDate": "04-08-2022",
+        "image": "everything_everywhere_all_at_once.png",
+        "numberOfReviews": 0
+    },
+    {
+        "id": 6,
+        "title": "Jurassic Park",
+        "medium": "movie",
+        "releaseDate": "06-11-1993",
+        "image": "jurassic_park.png",
+        "numberOfReviews": 0
+    },
+    {
+        "id": 7,
+        "title": "The Lord of the Rings: The Fellowship of the Ring",
+        "medium": "movie",
+        "releaseDate": "12-19-2001",
+        "image": "lord_of_the_rings_fellowship.png",
+        "numberOfReviews": 0
+    },
+    {
+        "id": 8,
+        "title": "Mad Max: Fury Road",
+        "medium": "movie",
+        "releaseDate": "05-15-2015",
+        "image": "mad_max_fury_road.png",
+        "numberOfReviews": 0
+    },
+    {
+        "id": 9,
+        "title": "The Godfather",
+        "medium": "movie",
+        "releaseDate": "03-24-1972",
+        "image": "godfather.png",
+        "numberOfReviews": 0
+    },
+    {
+        "id": 10,
+        "title": "Spider-Man: Into the Spider-Verse",
+        "medium": "movie",
+        "releaseDate": "12-14-2018",
+        "image": "spiderman_into_spiderverse.png",
+        "numberOfReviews": 0
+    },
+    {
+        "id": 11,
+        "title": "Dune: Part Two",
+        "medium": "movie",
+        "releaseDate": "03-01-2024",
+        "image": "dune_part_two.png",
+        "numberOfReviews": 0
     }
 ]

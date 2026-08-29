@@ -1,4 +1,4 @@
-import Work from '../Work.jsx'
+import Work from '../Work/Work.jsx'
 import './workCarousel.css'
 
 function WorkCarousel(props) {
@@ -20,3 +20,4 @@ function WorkCarousel(props) {
 
 
 export default WorkCarousel
+
