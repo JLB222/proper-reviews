@@ -15,7 +15,9 @@ function WorkPage(props) {
             <Work 
                 data = {workInfo}
             />
-            <Review />
+            <Review //should probably rename this to ReviewSection
+                data = {workInfo}
+            />
         </div>
 
     )

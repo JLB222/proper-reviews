@@ -1,0 +1,11 @@
+fieldset {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

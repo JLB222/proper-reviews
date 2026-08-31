@@ -1,22 +1,65 @@
 function Pillar(props) {
-    const {type} = props
+    const {pillarType} = props
     return (
-        <div>
-            <span className="star">0</span>
-            <span className="star">1</span>
-            <span className="star">2</span>
-            <span className="star">3</span>
-            <span className="star">4</span>
-            <span className="star">5</span>
-            <span className="star">6</span>
-            <span className="star">7</span>
-            <span className="star">8</span>
-            <span className="star">9</span>
-            <span className="star">10</span>
-        </div>
+        <fieldset>
+            <legend>{pillarType}</legend>
+
+            <label>
+                <input type="radio" name={`${pillarType} score`} value="0" />
+                0
+            </label>
+
+            <label>
+                <input type="radio" name={`${pillarType} score`} value="1" />
+                1
+            </label>
+
+            <label>
+                <input type="radio" name={`${pillarType} score`} value="2" />
+                2
+            </label>
+
+            <label>
+                <input type="radio" name={`${pillarType} score`} value="3" />
+                3
+            </label>
+
+            <label>
+                <input type="radio" name={`${pillarType} score`} value="4" />
+                4
+            </label>
+
+            <label>
+                <input type="radio" name={`${pillarType} score`} value="5" defaultChecked />
+                5
+            </label>
+
+            <label>
+                <input type="radio" name={`${pillarType} score`} value="6" />
+                6
+            </label>
+
+            <label>
+                <input type="radio" name={`${pillarType} score`} value="7" />
+                7
+            </label>
+
+            <label>
+                <input type="radio" name={`${pillarType} score`} value="8" />
+                8
+            </label>
+
+            <label>
+                <input type="radio" name={`${pillarType} score`} value="9" />
+                9
+            </label>
+
+            <label>
+                <input type="radio" name={`${pillarType} score`} value="10" />
+                10
+            </label>
+        </fieldset>
     )
 }
 
 export default Pillar
-
-//this honestly might be better as a fancy radio button with 11 options

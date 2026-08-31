@@ -15,10 +15,10 @@ function App() {
       <BrowserRouter>
           <Routes>
             <Route path="/" element={<CategoryPage medium="all"/>} />
-            <Route path="/movies" element={<CategoryPage medium="all"/>} />
-            <Route path="/tv" element={<CategoryPage medium="all"/>} />
-            <Route path="/games" element={<CategoryPage medium="all"/>} />
-            <Route path="/books" element={<CategoryPage medium="all"/>} />
+            <Route path="/movies" element={<CategoryPage medium="movies"/>} />
+            <Route path="/tv" element={<CategoryPage medium="tv"/>} />
+            <Route path="/games" element={<CategoryPage medium="games"/>} />
+            <Route path="/books" element={<CategoryPage medium="books"/>} />
             <Route path="/work/:id" element={<WorkPage />} />
           </Routes>
       </BrowserRouter>
@@ -36,6 +36,6 @@ export default App
 
 //To Do
 //what happens to the carousel if we have inconsistent image sizes?
-//add some CSS to the carousel that makes it look like an actual box; currently it just looks like off-center images
+//add some CSS to the carousel that makes it look like an actual box; currently it just looks like off-center images, at least on bigger screens
 //is 'Proper Reviews' in the header actually centered?  It looks off, but it could be my eyes playing tricks on me
 //Do we even need PopularRecently AND WorkCarousel?
