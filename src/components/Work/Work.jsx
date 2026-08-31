@@ -6,7 +6,6 @@ function Work(props) {
         <section className="centering-container work-section">
             <img src={`../images/${info.image}`} alt={`book cover or movie poster for ${info.title}`} />
             <p>Release Date: {info.releaseDate}</p>
-            <p>Number of Reviews: {info.numberOfReviews}</p>
         </section>
     )
 }

@@ -1,39 +1,53 @@
-import { useState } from 'react'
-import Pillar from './Pillar'
-//data will be inherited from a WorkPage component; it will create a generic section and inside is an array map for all the reviews from the database
-import './review.css'
-import reviewsDatabase from '../../reviewsDBPlaceholder.json'
+import comments from '../../commentsDBPlaceholder.json'
 
 function Review(props) {
-    const {workMedium} = props.data.medium  //movie, book, tvshow, game, etc
-    const moviePillars = ["Writing", "Visuals", "Sound", "Performance"]
-    const tvPillars = ["Writing", "Visuals", "Sound", "Performance"]
-    const bookPillars = ["Writing"]
+    const work = props.data
+    // const relevantComments = comments.filter()
 
-    // function determinePillar(str = workMedium) {
-    //     switch (str) {
-    //         case 'movie': return moviePillars
-    //         case 'tv'   : return tvPillars
-    //         case 'book' : return bookPillars
-    //     }
-    // }
+    function renderComments(score) {
+        const numberOfComments = Math.abs(score - 5)
 
-    const userReviews = reviewsDatabase.filter(el => el.workID === props.data.id) //find all reviews in the review database with a userID that matches the workID of what's currently being viewed (Spiderman, Superman, etc)
+        return (
+            <>
+                {Array.from({ length: numberOfComments }, (_, index) => (
+                    <p key={index} className="comment">Comment {index + 1}</p>
+                ))}
+            </>
+        )
+    }
+
     return (
-        <section className="centering-container review-section">
-            {userReviews.map((el, i, _) => 
-                <section key={i}>
-                    {el.pillarWritingScore && <span>Writing: {el.pillarWritingScore}</span>}
-                    {el.pillarVisualsScore && <span>Visuals: {el.pillarVisualsScore}</span>}
-                    {el.pillarSoundScore && <span>Sound: {el.pillarSoundScore}</span>}
-                    {el.pillarPerformanceScore && <span>Performance: {el.pillarPerformanceScore}</span>}
-                </section>
-            )}
-            {/* {determinePillar().map((el) => <Pillar pillarType = {el}/>)} */}
+        <section className="review">
+            {work.pillarWritingScore && 
+                <div className="comments writing">
+                    <h3 className="pillar">Writing: {work.pillarWritingScore}</h3>
+                    {renderComments(work.pillarWritingScore)}
+                </div>
+            }
+            {work.pillarVisualsScore && 
+                <div className="comments visuals">
+                    <h3 className="pillar">Visuals: {work.pillarVisualsScore}</h3>
+                    {renderComments(work.pillarVisualsScore)}
+                </div>
+            }
+            {work.pillarSoundScore && 
+                <div className="comments sound">
+                    <h3 className="pillar">Sound: {work.pillarSoundScore}</h3>
+                    {renderComments(work.pillarSoundScore)}
+                </div>
+            }
+            {work.pillarPerformanceScore && 
+                <div className="comments performance">
+                    <h3 className="pillar">Performance: {work.pillarPerformanceScore}</h3>
+                    {renderComments(work.pillarPerformanceScore)}
+                </div>
+            }
         </section>
     )
 }
 
+
 export default Review
 
-//can we make a dynamic number of pillars based on the medium?  you bet your ass we can
+
+//eventually we will add books, comics, etc, where the pillars will be different, so having each pillar rendered with && means we can eventually put all of the pillars here and only the relevant ones will render.

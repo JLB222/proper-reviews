@@ -9,3 +9,17 @@ label {
     flex-direction: column;
     align-items: center;
 }
+
+.review-container {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.review {
+    width: 100%;
+    background-color: bisque;
+    box-sizing: border-box;
+    padding: 5px;
+    margin-bottom: 5px;
+}

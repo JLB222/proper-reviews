@@ -1,6 +1,6 @@
 import Header from '../components/Header/Header'
 import Work from '../components/Work/Work'
-import Review from '../components/Reviews/Review'
+import ReviewSection from '../components/Reviews/ReviewSection'
 
 import database from '../databasePlaceholder.json'
 import { useParams } from "react-router-dom";
@@ -15,7 +15,7 @@ function WorkPage(props) {
             <Work 
                 data = {workInfo}
             />
-            <Review //should probably rename this to ReviewSection
+            <ReviewSection //should probably rename this to ReviewSection
                 data = {workInfo}
             />
         </div>

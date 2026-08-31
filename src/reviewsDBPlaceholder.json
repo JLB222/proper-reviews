@@ -1,10 +1,128 @@
 [
     {
+        "id": 0,
         "userID": 0,
         "workID": 0,
         "pillarWritingScore": 5,
         "pillarVisualsScore": 7,
-        "pillarSoundScore":   -3,
+        "pillarSoundScore": 3,
         "pillarPerformanceScore": 6
+    },
+    {
+        "id": 1,
+        "userID": 1,
+        "workID": 0,
+        "pillarWritingScore": 8,
+        "pillarVisualsScore": 6,
+        "pillarSoundScore": 5,
+        "pillarPerformanceScore": 9
+    },
+    {
+        "id": 2,
+        "userID": 2,
+        "workID": 1,
+        "pillarWritingScore": 4,
+        "pillarVisualsScore": 8,
+        "pillarSoundScore": 7,
+        "pillarPerformanceScore": 6
+    },
+    {
+        "id": 3,
+        "userID": 3,
+        "workID": 1,
+        "pillarWritingScore": 7,
+        "pillarVisualsScore": 5,
+        "pillarSoundScore": 8,
+        "pillarPerformanceScore": 7
+    },
+    {
+        "id": 4,
+        "userID": 4,
+        "workID": 2,
+        "pillarWritingScore": 3,
+        "pillarVisualsScore": 4,
+        "pillarSoundScore": 6,
+        "pillarPerformanceScore": 5
+    },
+    {
+        "id": 5,
+        "userID": 5,
+        "workID": 2,
+        "pillarWritingScore": 9,
+        "pillarVisualsScore": 8,
+        "pillarSoundScore": 9,
+        "pillarPerformanceScore": 8
+    },
+    {
+        "id": 6,
+        "userID": 6,
+        "workID": 3,
+        "pillarWritingScore": 6,
+        "pillarVisualsScore": 7,
+        "pillarSoundScore": 5,
+        "pillarPerformanceScore": 4
+    },
+    {
+        "id": 7,
+        "userID": 7,
+        "workID": 3,
+        "pillarWritingScore": 2,
+        "pillarVisualsScore": 6,
+        "pillarSoundScore": 4,
+        "pillarPerformanceScore": 3
+    },
+    {
+        "id": 8,
+        "userID": 8,
+        "workID": 4,
+        "pillarWritingScore": 8,
+        "pillarVisualsScore": 9,
+        "pillarSoundScore": 7,
+        "pillarPerformanceScore": 8
+    },
+    {
+        "id": 9,
+        "userID": 9,
+        "workID": 5,
+        "pillarWritingScore": 5,
+        "pillarVisualsScore": 4,
+        "pillarSoundScore": 6,
+        "pillarPerformanceScore": 5
+    },
+    {
+        "id": 10,
+        "userID": 10,
+        "workID": 6,
+        "pillarWritingScore": 7,
+        "pillarVisualsScore": 3,
+        "pillarSoundScore": 2,
+        "pillarPerformanceScore": 6
+    },
+    {
+        "id": 11,
+        "userID": 11,
+        "workID": 7,
+        "pillarWritingScore": 4,
+        "pillarVisualsScore": 9,
+        "pillarSoundScore": 8,
+        "pillarPerformanceScore": 7
+    },
+    {
+        "id": 12,
+        "userID": 2,
+        "workID": 8,
+        "pillarWritingScore": 6,
+        "pillarVisualsScore": 6,
+        "pillarSoundScore": 7,
+        "pillarPerformanceScore": 5
+    },
+    {
+        "id": 13,
+        "userID": 5,
+        "workID": 9,
+        "pillarWritingScore": 9,
+        "pillarVisualsScore": 5,
+        "pillarSoundScore": 8,
+        "pillarPerformanceScore": 9
     }
 ]
