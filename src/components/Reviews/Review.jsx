@@ -20,25 +20,25 @@ function Review(props) {
         <section className="review">
             {work.pillarWritingScore && 
                 <div className="comments writing">
-                    <h3 className="pillar">Writing: {work.pillarWritingScore}</h3>
+                    <h3 className="pillar">Writing: <span className="score">{work.pillarWritingScore}</span></h3>
                     {renderComments(work.pillarWritingScore)}
                 </div>
             }
             {work.pillarVisualsScore && 
                 <div className="comments visuals">
-                    <h3 className="pillar">Visuals: {work.pillarVisualsScore}</h3>
+                    <h3 className="pillar">Visuals: <span className="score">{work.pillarVisualsScore}</span></h3>
                     {renderComments(work.pillarVisualsScore)}
                 </div>
             }
             {work.pillarSoundScore && 
                 <div className="comments sound">
-                    <h3 className="pillar">Sound: {work.pillarSoundScore}</h3>
+                    <h3 className="pillar">Sound: <span className="score">{work.pillarSoundScore}</span></h3>
                     {renderComments(work.pillarSoundScore)}
                 </div>
             }
             {work.pillarPerformanceScore && 
                 <div className="comments performance">
-                    <h3 className="pillar">Performance: {work.pillarPerformanceScore}</h3>
+                    <h3 className="pillar">Performance: <span className="score">{work.pillarPerformanceScore}</span></h3>
                     {renderComments(work.pillarPerformanceScore)}
                 </div>
             }

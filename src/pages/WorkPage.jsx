@@ -5,6 +5,7 @@ import ReviewSection from '../components/Reviews/ReviewSection'
 import database from '../databasePlaceholder.json'
 import { useParams } from "react-router-dom";
 
+
 function WorkPage(props) {
     const workID = useParams().id
     const workInfo = database.find((el) => el.id === +workID)
@@ -15,7 +16,7 @@ function WorkPage(props) {
             <Work 
                 data = {workInfo}
             />
-            <ReviewSection //should probably rename this to ReviewSection
+            <ReviewSection
                 data = {workInfo}
             />
         </div>

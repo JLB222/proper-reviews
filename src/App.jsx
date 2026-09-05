@@ -3,13 +3,10 @@ import './App.css'
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import WorkPage from './pages/WorkPage'
 import CategoryPage from './pages/CategoryPage'
-import database from './databasePlaceholder.json'
 
 
 function App() {
-  function findWork(arr=database, workId) {
-    return arr.find((el) => el.id === workId)
-  }
+
   return (
     <>
       <BrowserRouter>
