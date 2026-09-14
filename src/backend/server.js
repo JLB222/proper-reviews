@@ -13,6 +13,38 @@ let db
 
 async function getPopular() {
     try {
+        // console.log("attempting to connect")
+        await client.connect()
+        // console.log("connected")
+
+        db = client.db("Proper-Reviews")
+        // console.log("Connected to MongoDB; about to query")
+
+        let data = await db.collection("works").find().toArray()
+        // console.log("query complete")
+        // console.log(data)
+
+        return data
+
+    } catch (err) {
+        console.error("Mongo Error:",err)
+        throw err
+    } 
+}
+
+app.get("/api/getPopularWorks", async (req,res) => {
+    // console.log("Get request received")
+    const data = await getPopular()
+
+    // console.log("data received from getPopular")
+    // console.log(data)
+    res.json(data)
+    // console.log("response sent")
+})
+
+
+async function getWorkReviews(workId) {
+    try {
         console.log("attempting to connect")
         await client.connect()
         console.log("connected")
@@ -20,7 +52,7 @@ async function getPopular() {
         db = client.db("Proper-Reviews")
         console.log("Connected to MongoDB; about to query")
 
-        let data = await db.collection("works").find().toArray()
+        let data = await db.collection("reviews").find({workID: workId}).toArray()
         console.log("query complete")
         console.log(data)
 
@@ -31,14 +63,12 @@ async function getPopular() {
         throw err
     } 
 }
+app.get("/api/getWorkReviews/:id", async (req,res) => {
+    const workid = +req.params.id  //url passes this as a string, so we convert it to a number
+    console.log(`GET request for work number ${workid} received`)
+    const data = await getWorkReviews(workid)
 
-
-
-app.get("/api/getPopularWorks", async (req,res) => {
-    console.log("Get request received")
-    const data = await getPopular()
-
-    console.log("data received from getPopular")
+    console.log("data received from getWorkReviews")
     console.log(data)
     res.json(data)
     console.log("response sent")
