@@ -51,3 +51,7 @@ export default Review
 
 
 //eventually we will add books, comics, etc, where the pillars will be different, so having each pillar rendered with && means we can eventually put all of the pillars here and only the relevant ones will render.
+
+//fetch to server router
+//server queries database for all reviews with workID matching the work we're currently looking at, makes it an array
+//map function to create a p element for every comment

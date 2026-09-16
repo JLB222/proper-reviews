@@ -53,7 +53,7 @@ async function getWorkReviews(workId) {
         console.log("Connected to MongoDB; about to query")
 
         let data = await db.collection("reviews").find({workID: workId}).toArray()
-        console.log("query complete")
+        console.log("reviews query complete")
         console.log(data)
 
         return data
@@ -65,14 +65,50 @@ async function getWorkReviews(workId) {
 }
 app.get("/api/getWorkReviews/:id", async (req,res) => {
     const workid = +req.params.id  //url passes this as a string, so we convert it to a number
-    console.log(`GET request for work number ${workid} received`)
+        console.log(`GET request for work number ${workid}'s reviews received`)
     const data = await getWorkReviews(workid)
 
-    console.log("data received from getWorkReviews")
-    console.log(data)
+        console.log("data received from getWorkReviews")
+        console.log(data)
     res.json(data)
-    console.log("response sent")
+        console.log("response sent")
 })
+
+
+async function getSpecificWork(workId) {
+    try {
+            console.log("attempting to connect")
+        await client.connect()
+            console.log("connected")
+
+        db = client.db("Proper-Reviews")
+            console.log("Connected to MongoDB; about to query")
+
+        let data = await db.collection("works").findOne({id: workId})
+        console.log("work query complete")
+        console.log(data)
+
+        return data
+
+    } catch (err) {
+        console.error("Mongo Error:",err)
+        throw err
+    } 
+}
+
+app.get("/api/getSpecificWork/:id", async (req,res) => {
+    const workid = +req.params.id  //url passes this as a string, so we convert it to a number
+        console.log(`GET request for work number ${workid} received`)
+    const data = await getSpecificWork(workid)
+
+        console.log("data received from getSpecificWork")
+        console.log(data)
+    res.json(data)
+        console.log("response sent")    
+})
+
+
+
 
 app.listen(5700, (req,res) => {
     console.log("listening on 5700")

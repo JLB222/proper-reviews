@@ -11,9 +11,9 @@ function ReviewSection(props) {
 
     async function getWorkReviews() {
         console.log("getWorkReviews is running")
-        const url = `http://127.0.0.1:5700/api/getWorkReviews/${props.data.id}`;
+        const url = `http://127.0.0.1:5700/api/getWorkReviews/${props.data}`;
         try {
-            console.log("about to fetch", `Work id: ${props.data.id}`)
+            console.log("about to fetch", `Work id: ${props.data}`)
             const response = await fetch(url);
             if (!response.ok) {
                 throw new Error(`Response status: ${response.status}`);
@@ -22,19 +22,14 @@ function ReviewSection(props) {
             const result = await response.json();
             console.log("Reviews found:", result);
 
-            return result
+            setReviews( result )
         } catch (error) {
             console.error(error.message);
         }
     }
 
     useEffect(() => {
-        async function fetchReviews() {
-            const result = await getWorkReviews()
-            setReviews(result)
-        }
-    
-        fetchReviews()
+        getWorkReviews()
     }, [])
 
 
@@ -52,4 +47,4 @@ function ReviewSection(props) {
 
 export default ReviewSection
 
-//can we make a dynamic number of pillars based on the medium?  you bet your ass we can
+//can we make a dynamic number of pillars based on the medium?  you bet your ass we can; see Review.jsx
