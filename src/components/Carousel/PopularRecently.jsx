@@ -1,4 +1,3 @@
-// import database from '../../databasePlaceholder.json'
 import { Link } from "react-router-dom"
 import './workCarousel.css'
 import { useState, useEffect } from "react";

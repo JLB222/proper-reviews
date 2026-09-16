@@ -1,9 +1,7 @@
-import comments from '../../commentsDBPlaceholder.json'
 
 function Review(props) {
     const work = props.data
-    // const relevantComments = comments.filter()
-
+    
     function renderComments(score) {
         const numberOfComments = Math.abs(score - 5)
 
