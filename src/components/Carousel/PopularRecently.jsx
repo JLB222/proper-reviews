@@ -7,7 +7,7 @@ function PopularRecently(props) {
     
     async function getPopularWorks() {
         console.log("getData is running")
-        const url = "http://127.0.0.1:5700/api/getPopularWorks";
+        const url = "/api/getPopularWorks";
         try {
                 console.log("about to fetch")
             const response = await fetch(url);

@@ -9,7 +9,7 @@ function ReviewSection(props) {
 
     async function getWorkReviews() {
         console.log("getWorkReviews is running")
-        const url = `http://127.0.0.1:5700/api/getWorkReviews/${props.data}`;
+        const url = `/api/getWorkReviews/${props.data}`;
         try {
             console.log("about to fetch", `Work id: ${props.data}`)
             const response = await fetch(url);

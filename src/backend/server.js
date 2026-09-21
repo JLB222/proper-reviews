@@ -108,8 +108,16 @@ app.get("/api/getSpecificWork/:id", async (req,res) => {
 })
 
 
+app.post("/api/submitReview", (req,res) => {
+    console.log(`POST request received: req.body: ${req.body}`)
+    res.json("This is a test response from the server")
+})
+
 
 
 app.listen(5700, (req,res) => {
     console.log("listening on 5700")
 })
+
+
+//can we combine the get specific work and get work reviews into one server call?  Should we?
