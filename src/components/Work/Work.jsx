@@ -26,7 +26,7 @@ function Work(props) {
             console.log("Work found:", result);
 
             setWork( result )
-            console.log(`The current state of work is: ${work}`)
+            console.log(`The current state of work is:`, {work})
         } catch (error) {
             console.error(error.message);
         }

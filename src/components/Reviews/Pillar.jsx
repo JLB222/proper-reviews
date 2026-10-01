@@ -1,13 +1,8 @@
 import { useState } from "react"
 
 function Pillar(props) {
-    const [score, setScore] = useState(5)
-    const {pillarType} = props
+    const {pillarType, score, changeScore, changeComment} = props
 
-    function changeScore(num) {
-        setScore(num)
-        createInputs(num)
-    }
     function createInputs(num) {
         let numOfInputs = Math.abs(num - 5)
         return (
@@ -20,11 +15,11 @@ function Pillar(props) {
                         size="160"
                         maxLength="200"
                         name={pillarType + index}
+                        onChange={(e) => changeComment(pillarType, index, e.target.value)}
                     />
                 ))}
             </>
         )
-
     }
 
 
@@ -34,57 +29,57 @@ function Pillar(props) {
                 <legend>{pillarType}</legend>
 
                 <label>
-                    <input type="radio" name={`${pillarType} score`} value="0" onChange={() => changeScore(0)}/>
+                    <input type="radio" name={`${pillarType} score`} value="0" onChange={() => changeScore(pillarType, 0)}/>
                     0
                 </label>
 
                 <label>
-                    <input type="radio" name={`${pillarType} score`} value="1" onChange={() => changeScore(1)} />
+                    <input type="radio" name={`${pillarType} score`} value="1" onChange={() => changeScore(pillarType, 1)} />
                     1
                 </label>
 
                 <label>
-                    <input type="radio" name={`${pillarType} score`} value="2" onChange={() => changeScore(2)} />
+                    <input type="radio" name={`${pillarType} score`} value="2" onChange={() => changeScore(pillarType, 2)} />
                     2
                 </label>
 
                 <label>
-                    <input type="radio" name={`${pillarType} score`} value="3" onChange={() => changeScore(3)} />
+                    <input type="radio" name={`${pillarType} score`} value="3" onChange={() => changeScore(pillarType, 3)} />
                     3
                 </label>
 
                 <label>
-                    <input type="radio" name={`${pillarType} score`} value="4" onChange={() => changeScore(4)} />
+                    <input type="radio" name={`${pillarType} score`} value="4" onChange={() => changeScore(pillarType, 4)} />
                     4
                 </label>
 
                 <label>
-                    <input type="radio" name={`${pillarType} score`} value="5" defaultChecked  onChange={() => changeScore(5)}/>
+                    <input type="radio" name={`${pillarType} score`} value="5" defaultChecked  onChange={() => changeScore(pillarType, 5)}/>
                     5
                 </label>
 
                 <label>
-                    <input type="radio" name={`${pillarType} score`} value="6"  onChange={() => changeScore(6)}/>
+                    <input type="radio" name={`${pillarType} score`} value="6"  onChange={() => changeScore(pillarType, 6)}/>
                     6
                 </label>
 
                 <label>
-                    <input type="radio" name={`${pillarType} score`} value="7"  onChange={() => changeScore(7)}/>
+                    <input type="radio" name={`${pillarType} score`} value="7"  onChange={() => changeScore(pillarType, 7)}/>
                     7
                 </label>
 
                 <label>
-                    <input type="radio" name={`${pillarType} score`} value="8"  onChange={() => changeScore(8)}/>
+                    <input type="radio" name={`${pillarType} score`} value="8"  onChange={() => changeScore(pillarType, 8)}/>
                     8
                 </label>
 
                 <label>
-                    <input type="radio" name={`${pillarType} score`} value="9"  onChange={() => changeScore(9)}/>
+                    <input type="radio" name={`${pillarType} score`} value="9"  onChange={() => changeScore(pillarType, 9)}/>
                     9
                 </label>
 
                 <label>
-                    <input type="radio" name={`${pillarType} score`} value="10"  onChange={() => changeScore(10)}/>
+                    <input type="radio" name={`${pillarType} score`} value="10"  onChange={() => changeScore(pillarType, 10)}/>
                     10
                 </label>
             </fieldset>

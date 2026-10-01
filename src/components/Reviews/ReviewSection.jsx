@@ -4,12 +4,12 @@ import Review from './Review'
 
 
 function ReviewSection(props) {
-    const [reviews, setReviews] = useState(null)
+    const [ratings, setRatings] = useState(null)
 
 
-    async function getWorkReviews() {
-        console.log("getWorkReviews is running")
-        const url = `/api/getWorkReviews/${props.data}`;
+    async function getWorkRatings() {
+        console.log("getWorkRatings is running")
+        const url = `/api/getWorkRatings/${props.data}`;
         try {
             console.log("about to fetch", `Work id: ${props.data}`)
             const response = await fetch(url);
@@ -18,24 +18,24 @@ function ReviewSection(props) {
             } else {console.log ("fetch complete")}
 
             const result = await response.json();
-            console.log("Reviews found:", result);
+            console.log("Ratings found:", result);
 
-            setReviews( result )
+            setRatings( result )
         } catch (error) {
             console.error(error.message);
         }
     }
 
     useEffect(() => {
-        getWorkReviews()
+        getWorkRatings()
     }, [])
 
 
     // const user = userDatabase // need to add users here to match review with user name
     return (
         <section className="centering-container review-container">
-            <p className="review-count">Number of Reviews: {reviews?.length || 0}</p>
-            {reviews?.map((el, i, _) => 
+            <p className="review-count">Number of Reviews: {ratings?.length || 0}</p>
+            {ratings?.map((el, i, _) => 
                 <Review key={i} data={el} userName="{user}"/>
             )}
         </section>
