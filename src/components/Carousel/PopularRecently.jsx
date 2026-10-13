@@ -51,3 +51,6 @@ function PopularRecently(props) {
 
 
 export default PopularRecently
+
+
+//it'd be nice if i could scroll the carousel with the mouse wheel

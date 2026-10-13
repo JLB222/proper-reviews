@@ -124,31 +124,35 @@ async function formatReview(review) {
         db = client.db("Proper-Reviews")
             console.log("Connected to MongoDB")
 
-        db.collection("ratings").insertOne(
-            {
-                id: 0,  //need to generate unique id for this set of ratings.  perhaps user's id + timestamp?
-                userID: 0, //this will eventually be passed via req.body
-                workID: review.workID, //currently passed in req.body
-                pillarWritingScore: review.Writing.score,
-                pillarVisualsScore: review.Visuals.score,
-                pillarSoundScore: review.Sound.score,
-                pillarPerformanceScore: review.Performance.score
-            })
-
-        for (let key in review) { //loop through the review object
-           if (review[key].comments?.length > 0){ //for review properties that are an object themselves and have a comments array:
+        let reviewRatings = []
+        for (let key in review) {
+            //generate ratingID
+            if (typeof review[key].score == "number") { //this will prevent the workID property from review from creating a rating entry
+                reviewRatings.push(
+                    ({
+                        ratingID: 0,  //need to generate unique id for this set of ratings.  perhaps user's id + timestamp?
+                        userID: 0, //this will eventually be passed via req.body
+                        workID: review.workID, //currently passed in req.body
+                        pillar: key,
+                        score: review[key].score
+                    })
+                )
+            }
+            if (review[key].comments?.length > 0){ //for review properties that are an object themselves and have a comments array:
 
                 let pillarComments =  review[key].comments.map(el => ({ //define the documents and store them here
-                        id: 0, //needs a unique id 
+                        commentID: 0, //needs a unique id 
                         userID: 0, //later get from req.body 
                         workID: review.workID, 
-                        pillar: key,
+                        ratingID: 0, //this might be necessary for when we want to alter someone's rating if and when their comment is deemed insufficient to justify the score.  when the comment is rejected, their rating score needs to be adjusted
+                        // pillar: key,  //removed to add instead to the ratings object above
                         comment: el
                 }))
                 console.log("key:", key, "pillarComments:", pillarComments) //debug check
                 db.collection("comments").insertMany(pillarComments)//insert those comments in the database
             }
         }
+        db.collection("ratings").insertMany(reviewRatings) //insert those rating objects in the database
         
         console.log("formatReview complete")
 
@@ -167,3 +171,7 @@ app.listen(5700, (req,res) => {
 //both ratings and comments need a unique ID in the database
 //should not be possible to add a rating or comment whose ID already exists in the database
     //might just check to see if rating's ID is already in the ratings collection; if it is, reject the whole submission, since users can only have one submission per work
+//ratings might end up being individual documents, like comments are.  will have to change the route handler accordingly
+    //DONE
+//now that ratings are each their own document and the 'Pillar' has been moved from comments to ratings, the entire process is inside one large for-in loop.  Now, when the ratingID is generated, it can be attached to both the rating and any comments related to it
+    //fixed:  code for creating the rating document didn't account for the workID property in the review object; now it does, so we no longer get an erroneous document with the pillar of "workID" and a score of null
