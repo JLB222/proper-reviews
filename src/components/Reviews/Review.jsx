@@ -1,45 +1,29 @@
 
 function Review(props) {
-    const work = props.data
-    
-    function renderComments(score) {
-        const numberOfComments = Math.abs(score - 5)
+    const {comments, ratings, user} = props.data  //props.data is an object containing comments(array of comment objects), ratings(array of ratings objects), and the userID(integer)
 
-        return (
-            <>
-                {Array.from({ length: numberOfComments }, (_, index) => (
-                    <p key={index} className="comment">Comment {index + 1}</p>
-                ))}
-            </>
-        )
-    }
+    console.log("review data:", props.data, "userID:", user)
+    console.log("ratings:", ratings, "comments:", comments)
 
     return (
         <section className="review">
-            {work.pillarWritingScore && 
-                <div className="comments writing">
-                    <h3 className="pillar">Writing: <span className="score">{work.pillarWritingScore}</span></h3>
-                    {renderComments(work.pillarWritingScore)}
-                </div>
-            }
-            {work.pillarVisualsScore && 
-                <div className="comments visuals">
-                    <h3 className="pillar">Visuals: <span className="score">{work.pillarVisualsScore}</span></h3>
-                    {renderComments(work.pillarVisualsScore)}
-                </div>
-            }
-            {work.pillarSoundScore && 
-                <div className="comments sound">
-                    <h3 className="pillar">Sound: <span className="score">{work.pillarSoundScore}</span></h3>
-                    {renderComments(work.pillarSoundScore)}
-                </div>
-            }
-            {work.pillarPerformanceScore && 
-                <div className="comments performance">
-                    <h3 className="pillar">Performance: <span className="score">{work.pillarPerformanceScore}</span></h3>
-                    {renderComments(work.pillarPerformanceScore)}
-                </div>
-            }
+            <cite>User: {user}</cite>
+            {ratings
+                .sort((a,b) => (b.pillar).localeCompare(a.pillar))  //ensures the order of pillar presentation is the same across every work
+                .map((rating) => 
+                    <div className={rating.pillar}>
+                        <h3 className="pillar">{rating.pillar}: <span className="score">{rating.score}</span></h3>
+                        <ul className="comments">
+                            {comments.map((comment) => comment.ratingID == rating.ratingID ?
+                                <li className="comment">
+                                    {comment.comment}
+                                </li>
+                                : null
+                            )}
+                        </ul>
+                    </div>
+            )}
+        
         </section>
     )
 }
@@ -49,7 +33,6 @@ export default Review
 
 
 //eventually we will add books, comics, etc, where the pillars will be different, so having each pillar rendered with && means we can eventually put all of the pillars here and only the relevant ones will render.
+    //we're now rendering the pillars based on what the rating objects say their pillar is, which is determined at submitReview.jsx when a user submits.  so as long as review submission is dynamic in that regard, this should take care of itself
 
-//fetch to server router
-//server queries database for all reviews with workID matching the work we're currently looking at, makes it an array
-//map function to create a p element for every comment
+

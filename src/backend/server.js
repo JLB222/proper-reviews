@@ -3,6 +3,7 @@ import { MongoClient } from "mongodb"
 import cors from "cors"
 import dotenv from 'dotenv';
 dotenv.config({ path: './config.env' });
+import { randomUUID } from "node:crypto";
 
 const app = express()
 app.use(cors())
@@ -46,18 +47,24 @@ app.get("/api/getPopularWorks", async (req,res) => {
 
 async function getWorkRatings(workId) {
     try {
-        console.log("attempting to connect")
+            console.log("attempting to connect")
         await client.connect()
-        console.log("connected")
+            console.log("connected")
 
         db = client.db("Proper-Reviews")
-        console.log("Connected to MongoDB; about to query")
+            console.log("Connected to MongoDB; about to query")
 
-        let data = await db.collection("ratings").find({workID: workId}).toArray()
-        console.log("reviews query complete")
-        console.log(data)
+        let ratingsData = await db.collection("ratings").find({workID: workId}).toArray()
+            console.log("ratings query complete")
+            console.log("ratings data:", ratingsData)
+        
+        let commentsData = await db.collection("comments").find({workID: workId}).toArray()
+            console.log("comments query complete")
+            console.log("comments data:", commentsData)
 
-        return data
+        
+
+        return [ratingsData, commentsData]
 
     } catch (err) {
         console.error("Mongo Error:",err)
@@ -115,7 +122,7 @@ app.post("/api/submitReview", (req,res) => {
     res.json("This is a test response from the server")
 })
 
-async function formatReview(review) {
+async function formatReview(review) {  //takes the review state object and formats it for server-side needs
     try {
             console.log("attempting to connect")
         await client.connect()
@@ -126,12 +133,12 @@ async function formatReview(review) {
 
         let reviewRatings = []
         for (let key in review) {
-            //generate ratingID
-            if (typeof review[key].score == "number") { //this will prevent the workID property from review from creating a rating entry
+            const rating_id = randomUUID();
+            if (typeof review[key].score == "number") { //this will prevent the workID property from review from creating a rating entry that has the value null (workID has no score property, so it becomes null)
                 reviewRatings.push(
                     ({
-                        ratingID: 0,  //need to generate unique id for this set of ratings.  perhaps user's id + timestamp?
-                        userID: 0, //this will eventually be passed via req.body
+                        ratingID: rating_id,  //need to generate unique id for this set of ratings.  perhaps user's id + timestamp?
+                        userID: 2, //this will eventually be passed via req.body
                         workID: review.workID, //currently passed in req.body
                         pillar: key,
                         score: review[key].score
@@ -141,10 +148,10 @@ async function formatReview(review) {
             if (review[key].comments?.length > 0){ //for review properties that are an object themselves and have a comments array:
 
                 let pillarComments =  review[key].comments.map(el => ({ //define the documents and store them here
-                        commentID: 0, //needs a unique id 
-                        userID: 0, //later get from req.body 
+                        commentID: randomUUID(), //needs a unique id 
+                        userID: 2, //later get from req.body 
                         workID: review.workID, 
-                        ratingID: 0, //this might be necessary for when we want to alter someone's rating if and when their comment is deemed insufficient to justify the score.  when the comment is rejected, their rating score needs to be adjusted
+                        ratingID: rating_id, //this might be necessary for when we want to alter someone's rating if and when their comment is deemed insufficient to justify the score.  when the comment is rejected, their rating score needs to be adjusted
                         // pillar: key,  //removed to add instead to the ratings object above
                         comment: el
                 }))
@@ -169,9 +176,11 @@ app.listen(5700, (req,res) => {
 
 //can we combine the get specific work and get work reviews into one server call?  Should we?
 //both ratings and comments need a unique ID in the database
+    //done
 //should not be possible to add a rating or comment whose ID already exists in the database
     //might just check to see if rating's ID is already in the ratings collection; if it is, reject the whole submission, since users can only have one submission per work
 //ratings might end up being individual documents, like comments are.  will have to change the route handler accordingly
     //DONE
 //now that ratings are each their own document and the 'Pillar' has been moved from comments to ratings, the entire process is inside one large for-in loop.  Now, when the ratingID is generated, it can be attached to both the rating and any comments related to it
     //fixed:  code for creating the rating document didn't account for the workID property in the review object; now it does, so we no longer get an erroneous document with the pillar of "workID" and a score of null
+//blank comments are allowed; that needs to change.  front end fix or back end?  probably front

@@ -5,7 +5,7 @@ import SubmitReview from '../Reviews/SubmitReview'
 function Work(props) {
     
     const [work, setWork] = useState([])
-        console.log(`The workID from useParams() is: ${props.data}`)
+        // console.log(`The workID from useParams() is: ${props.data}`)
     const [isWritingReview, setIsWritingReview] = useState(false)
     
     function reviewToggle() {
@@ -13,20 +13,20 @@ function Work(props) {
     }
 
     async function getWorkData() {
-        console.log(`getWorkData is running`)
+        // console.log(`getWorkData is running`)
         const url = `/api/getSpecificWork/${props.data}`
         try {
-            console.log("about to fetch", `Work id: ${props.data}`)
+            // console.log("about to fetch", `Work id: ${props.data}`)
             const response = await fetch(url)
             if (!response.ok) {
                     throw new Error(`Response status: ${response.status}`);
             } else {console.log ("fetch complete")}
 
             const result = await response.json();
-            console.log("Work found:", result);
+            // console.log("Work found:", result);
 
             setWork( result )
-            console.log(`The current state of work is:`, {work})
+            // console.log(`The current state of work is:`, {work})
         } catch (error) {
             console.error(error.message);
         }
